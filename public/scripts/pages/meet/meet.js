@@ -2,7 +2,7 @@ setTimeout(function() {
 
             ///////////////////////////////////////////////////////////////////////
             //for meet.index.blade.php 
-            if (document.querySelector('#meeting-index')) {
+            if (document.querySelector('#meet')) {
 
                 function scheduleLogBuilder(data){
 

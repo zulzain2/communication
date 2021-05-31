@@ -69,6 +69,44 @@ li.user{
   text-align: center;
 }
 
+
+
+/* body {
+      overscroll-behavior-y: contain;
+  } */
+
+  .ph-no-space {
+    padding: unset;
+    margin: unset;
+}
+
+.ph-no-border {
+    border: unset;
+}
+
+.ph-item {
+
+    background-color: rgba(255, 255, 255, 0);
+
+}
+
+.off-btn {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+input[type=date], input[type=time] {
+    line-height: initial !important;
+    padding-top: 16px !important;
+    height: 100% !important;
+    padding-bottom: 16px !important;
+}
+
+.snackbar-toast {
+    padding: 15px 18px;
+    line-height: unset;
+}
+
 ul.no-bullet{
   list-style-type:none;
   padding:0;

@@ -1,9 +1,5 @@
 @extends('layouts.empty')
 
-@push('styles')
-
-@endpush
-
 @section('content')
 
 

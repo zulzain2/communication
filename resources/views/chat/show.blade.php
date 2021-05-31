@@ -1,28 +1,5 @@
 @extends('layouts.app')
 
-@push('styles')
-
-<style>
-    /* #footer-chat {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 98;
-    background-color: rgba(249,249,249,.98);
-    box-shadow: 0 -5px 10px 0 rgb(0 0 0 / 6%);
-    min-height: 60px;
-    min-height: calc(60px + (constant(safe-area-inset-bottom))*1.1);
-    min-height: calc(60px + (env(safe-area-inset-bottom))*1.1);
-    display: flex;
-    text-align: center;
-    transition: all 350ms ease;
-} */
-</style>
-
-
-@endpush
-
 @section('content')
 
 <div class="c">
