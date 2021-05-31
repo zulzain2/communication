@@ -54,7 +54,7 @@ Route::get('home', 'App\Http\Controllers\HomeController@index');
 
 Route::resource('notification', 'App\Http\Controllers\NotificationController');
 //Chat  View Resources
-Route::get('chat/{user_id}',[ChatController::class, 'show'])->name('chat.show');
+Route::get('chat/{id}',[ChatController::class, 'getMessage'])->name('chat');
 Route::resource('chat', 'App\Http\Controllers\ChatController');
 
 Route::post('fetch/getScheduleMeeting', 'App\Http\Controllers\MeetController@getScheduleMeeting');

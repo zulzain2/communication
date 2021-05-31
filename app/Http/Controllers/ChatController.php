@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Chat;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
@@ -21,6 +22,26 @@ class ChatController extends Controller
         $users = User::where('id','!=',Auth()->id())->get();
         // $users = User::all();
         return view('chat.index')->with(compact('users'));
+    }
+
+    public function getMessage($user_id){
+
+      $my_id = auth()->user()->id;
+      //get unread message
+      Chat::where(['from' => $user_id, 'to' => $my_id])->update(['is_read' => 1]);
+
+      //get the information of selected user
+      $friendInfo = User::findOrFail($user_id);
+
+      //getting all messages from selected user
+      //getting those message which is from = auth()->id() and to=user_id or vice versa
+      $chat_message = Chat::where(function ($query) use ($user_id, $my_id) {
+          $query->where('from', $user_id)->where('to', $my_id);
+      })->orWhere(function ($query) use ($user_id, $my_id) {
+          $query->where('from', $my_id)->where('to', $user_id);
+      })->get();
+
+      return view('chat.messages')->with(compact('chat_message','friendInfo'));
     }
 
     /**

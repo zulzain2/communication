@@ -29,101 +29,35 @@
       </div>
 
       <div class="card card-style ms-3 mt-3" style="height:100%;">
-        <div class="content my-2">
+        <div class="content">
           <div class="list-group list-custom-large">
             @if ($users->count())
+            <ul class="no-bullet">
               @foreach ($users as $user)
-              <ul class="no-bullet">
-                <li>
-                  {{-- <a href="{{ chat/13 }}"> --}}
-                  <a href="{{ route('chat.show',$user->id)}}">
-                    <span style="margin-left:5%;margin-top:1%;text-align:center;">{{substr($user->name,0,1) }}</span>
-                    <img src="images/profile.png" style="width:40px !important;margin-right: 15px;"
-                      class="preload-img img-fluid rounded-circle bg-highlight">
-                    <span>{{ $user->name }}</span>
+                <li class="user">
+                  <div class="name-image bg-highlight">
+                    {{substr($user->name,0,1) }}
+                  </div>
+                  <div class="information" id="{{ $user->id }}">
+                    <span>{{ $user->name }}</span><br>
                     <strong>A powerful Mobile Template</strong>
-                    {{-- <span class="badge bg-dark-light mt-2">12:15 PM</span>
-                    <span class="badge rounded-pill bg-fade-highlight-light color-highlight">06</span> --}}
-                  </a>
+                  </div>
+                  {{-- <a href="{{ chat/13 }}"> --}}
+                  {{-- <a href="{{ route('chat.show',$user->id)}}"> --}}
+                  {{-- </a> --}}
                 </li>
+                @endforeach
               </ul>
-              @endforeach
             @endif
           </div>
         </div>
       </div>
     </div>
-    <div class="col-md-8 col-lg-9 col-sm-12 d-none d-lg-block d-md-block" style="height:73vh;overflow-y: scroll;">
+    {{-- <div class="col-md-8 col-lg-9 col-sm-12 d-none d-lg-block d-md-block" style="height:73vh;overflow-y: scroll;" id="chat-message">
 
-      <div class="content">
-        <div class="speech-bubble speech-right color-black">
-          These are chat bubbles, right? They look awesome don't they?
-        </div>
-        <div class="clearfix"></div>
-        <div class="speech-bubble speech-left bg-highlight">
-          Yeap!
-        </div>
-        <div class="clearfix"></div>
-        <div class="speech-bubble speech-left bg-highlight">
-          They also expand to a certain point, just like the ones that Mobile Chat apps have!
-        </div>
-        <div class="clearfix"></div>
-        <div class="speech-bubble speech-right color-black">
-          Awesome! Images too?
-        </div>
-        <div class="clearfix"></div>
-        <p class="text-center mb-0 font-11">Yesterday, 1:45 AM</p>
-        <div class="speech-bubble speach-image speech-left bg-highlight">
-          <img class="img-fluid preload-img" src="images/empty.png" data-src="images/pictures/8w.jpg" alt="img">
-        </div>
-        <div class="clearfix"></div>
-        <div class="speech-bubble speech-left bg-highlight">
-          Images can be used here as well, very easy! Just add an image tag!
-        </div>
-        <div class="clearfix"></div>
-        <div class="speech-bubble speech-right color-black">
-          WOW! Videos?!
-        </div>
-        <div class="clearfix"></div>
-        <div class="speech-bubble speech-right color-black">
-          Can I Embed videos or wait, actually, can I add maps?
-        </div>
-        <div class="clearfix"></div>
-        <div class="speech-bubble speach-image speech-left">
-          <iframe class="w-100" src='https://www.youtube.com/watch?v=mnwj6KxAvFc' frameborder='0'
-            allowfullscreen=""></iframe>
-        </div>
-        <div class="clearfix"></div>
-        <div class="speech-bubble speech-left bg-highlight">
-          Yep! Just embed your stuff here. It's super simple. You just copy the embed code in this place.
-        </div>
-        <div class="clearfix"></div>
-        <p class="text-center mb-0 font-11">25 Minutes Ago</p>
-        <div class="speech-bubble speech-right color-black">
-          Is this an actual chat system? Can i send messages already?
-        </div>
-        <div class="clearfix"></div>
-        <div class="speech-bubble speech-last speech-left bg-highlight">
-          It's just a chat template, but it's ready and able to be coded into a full chat system. Great huh?
-        </div>
-        <div class="clearfix"></div>
-        <em class="speech-read mb-3">Delivered & Read - 07:18 PM</em>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-8 col-lg-9 col-sm-12 d-none d-lg-block offset-lg-3 offset-md-4">
-      <div class="d-flex" style="width: inherit;position: fixed;bottom: 80px;right: 0;z-index: 98;">
-        <div class="me-3 speach-icon text-center">
-          <a href="#" data-menu="menu-upload" class="bg-gray-dark ms-2"><i class="fa fa-plus pt-2"></i></a>
-        </div>
-        <div class="flex-fill speach-input">
-          <input type="text" class="form-control" placeholder="Enter your Message here">
-        </div>
-        <div class="ms-3 speach-icon text-center me-2">
-          <a href="#" class="bg-highlight me-2"><i class="fa fa-arrow-up pt-2"></i></a>
-        </div>
-      </div>
+    </div> --}}
+    <div class="col-md-8 col-lg-9 col-sm-12 d-none d-lg-block d-md-block" style="height:73vh;overflow-y: scroll;" id="chat-message" >
+      {{-- content in here is append from the message.blade --}}
     </div>
   </div>
 @endsection
@@ -163,3 +97,28 @@
   </div>
 
 @endsection
+@push('scripts')
+<script>
+  //This is a function to append the html from the chat page,with another page by calling the html(data)
+  //data is the receiver id, with the related item called.
+  var receiver_id = "";
+  var my_id = "{{ Auth()->id() }}";
+  $(document).ready(function(){
+    $(".information").click(function(){
+      receiver_id = $(this).attr('id');
+      $.ajax({
+        type: "get",
+        url:"chat/" + receiver_id,
+        data: "",
+        cache:false,
+        success: function(data){
+          $('#chat-message').html(data);
+          // alert(data);
+        }
+      })
+    });
+  });
+  // console.log(receiver_id);
+</script>
+
+@endpush
