@@ -20,6 +20,9 @@
     <link rel="stylesheet" href="{{URL::to('styles/placeholder/placeholder-loading.min.css')}}">
     <link rel="manifest" href="{{ URL::to('_manifest.json') }}" data-pwa-version="set_in_manifest_and_pwa_js">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ URL::to('app/icons/icon-192x192.png') }}">
+
+    {{-- Pusher --}}
+    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
 </head>
 
 <body class="theme-light" data-highlight="highlight-red" data-gradient="body-default">
