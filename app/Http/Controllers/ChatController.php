@@ -40,7 +40,7 @@ class ChatController extends Controller
       })->orWhere(function ($query) use ($user_id, $my_id) {
           $query->where('from', $my_id)->where('to', $user_id);
       })->get();
-
+      //
       return view('chat.messages')->with(compact('chat_message','friendInfo'));
     }
 
