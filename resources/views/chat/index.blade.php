@@ -22,6 +22,7 @@
           <input type="text" class="border-0" placeholder="What are you looking for? ">
           <a href="#" class="disabled"><i class="fa fa-times-circle color-red-dark"></i></a>
         </div>
+<<<<<<< HEAD
       </div>
 
       <div class="card card-style ms-3 mt-3" style="height:100%;">
@@ -46,6 +47,63 @@
               </ul>
             @endif
           </div>
+=======
+        <div class="col-md-8 col-lg-9 col-sm-12 d-none d-lg-block" style="height:82vh;overflow-y: scroll;">
+
+            <div class="content">
+                <div class="speech-bubble speech-right color-black">
+                    These are chat bubbles, right? They look awesome don't they?
+                </div>
+                <div class="clearfix"></div>
+                <div class="speech-bubble speech-left bg-highlight">
+                    Yeap!
+                </div>
+                <div class="clearfix"></div>
+                <div class="speech-bubble speech-left bg-highlight">
+                    They also expand to a certain point, just like the ones that Mobile Chat apps have!
+                </div>
+                <div class="clearfix"></div>
+                <div class="speech-bubble speech-right color-black">
+                    Awesome! Images too?
+                </div>
+                <div class="clearfix"></div>
+                <p class="text-center mb-0 font-11">Yesterday, 1:45 AM</p>
+                <div class="speech-bubble speach-image speech-left bg-highlight">
+                    <img class="img-fluid preload-img" src="images/empty.png" data-src="images/pictures/8w.jpg" alt="img">
+                </div>
+                <div class="clearfix"></div>
+                <div class="speech-bubble speech-left bg-highlight">
+                    Images can be used here as well, very easy! Just add an image tag!
+                </div>
+                <div class="clearfix"></div>
+                <div class="speech-bubble speech-right color-black">
+                    WOW! Videos?!
+                </div>
+                <div class="clearfix"></div>
+                <div class="speech-bubble speech-right color-black">
+                    Can I Embed videos or wait, actually, can I add maps?
+                </div>
+                <div class="clearfix"></div>
+                <div class="speech-bubble speach-image speech-left">
+                    <iframe class="w-100" src='https://www.youtube.com/watch?v=mnwj6KxAvFc' frameborder='0' allowfullscreen=""></iframe>
+                </div>
+                <div class="clearfix"></div>
+                <div class="speech-bubble speech-left bg-highlight">
+                    Yep! Just embed your stuff here. It's super simple. You just copy the embed code in this place.
+                </div>
+                <div class="clearfix"></div>
+                    <p class="text-center mb-0 font-11">25 Minutes Ago</p>
+                <div class="speech-bubble speech-right color-black">
+                    Is this an actual chat system? Can i send messages already?
+                </div>
+                <div class="clearfix"></div>
+                <div class="speech-bubble speech-last speech-left bg-highlight">
+                    It's just a chat template, but it's ready and able to be coded into a full chat system. Great huh?
+                </div>
+                <div class="clearfix"></div>
+                <em class="speech-read mb-3">Delivered & Read - 07:18 PM</em>
+            </div>
+>>>>>>> parent of ad1abd2... ui
         </div>
       </div>
     </div>

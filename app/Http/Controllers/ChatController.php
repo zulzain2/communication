@@ -20,9 +20,8 @@ class ChatController extends Controller
      */
     public function index()
     {
-        $users = User::where('id','!=',Auth()->id())->get();
-        // $users = User::all();
-        return view('chat.index')->with(compact('users'));
+        $topBarTitle = 'Chat';
+        return view('chat.index')->with(compact('topBarTitle'));
     }
 
     //function to get the message.

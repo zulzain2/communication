@@ -17,8 +17,9 @@ class NotificationController extends Controller
      */
     public function index()
     {
+        $topBarTitle = 'Notification';
 
-        return view('notification.index');
+        return view('notification.index')->with(compact('topBarTitle'));
     }
 
     /**
