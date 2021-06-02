@@ -22,7 +22,7 @@
           <input type="text" class="border-0" placeholder="What are you looking for? ">
           <a href="#" class="disabled"><i class="fa fa-times-circle color-red-dark"></i></a>
         </div>
-<<<<<<< HEAD
+
       </div>
 
       <div class="card card-style ms-3 mt-3" style="height:100%;">
@@ -47,8 +47,8 @@
               </ul>
             @endif
           </div>
-=======
-        <div class="col-md-8 col-lg-9 col-sm-12 d-none d-lg-block" style="height:82vh;overflow-y: scroll;">
+
+        {{-- <div class="col-md-8 col-lg-9 col-sm-12 d-none d-lg-block" style="height:82vh;overflow-y: scroll;">
 
             <div class="content">
                 <div class="speech-bubble speech-right color-black">
@@ -103,8 +103,8 @@
                 <div class="clearfix"></div>
                 <em class="speech-read mb-3">Delivered & Read - 07:18 PM</em>
             </div>
->>>>>>> parent of ad1abd2... ui
-        </div>
+
+        </div> --}}
       </div>
     </div>
     {{-- <div class="col-md-8 col-lg-9 col-sm-12 d-none d-lg-block d-md-block" style="height:73vh;overflow-y: scroll;" id="chat-message">
