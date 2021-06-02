@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Pusher\Pusher;
 use App\Models\Chat;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -19,11 +20,11 @@ class ChatController extends Controller
      */
     public function index()
     {
-        $users = User::where('id','!=',Auth()->id())->get();
-        // $users = User::all();
-        return view('chat.index')->with(compact('users'));
+        $topBarTitle = 'Chat';
+        return view('chat.index')->with(compact('topBarTitle'));
     }
 
+    //function to get the message.
     public function getMessage($user_id){
 
       $my_id = auth()->user()->id;
@@ -40,9 +41,40 @@ class ChatController extends Controller
       })->orWhere(function ($query) use ($user_id, $my_id) {
           $query->where('from', $my_id)->where('to', $user_id);
       })->get();
-
+      //
       return view('chat.messages')->with(compact('chat_message','friendInfo'));
     }
+
+    //function to send the message
+    public function sendMessage(Request $request){
+      $from = auth()->user()->id;
+      $to = $request->receiver_id;
+      $message = $request->message;
+
+      $data = new Chat();
+      $data->from = $from;
+      $data->to = $to;
+      $data->message = $message;
+      $data->is_read = 0; // default is 0 which is unread
+      $data->save();
+
+      // pusher
+        $options = array(
+          'cluster' => 'ap1',
+          'useTLS' => true
+      );
+
+      $pusher = new Pusher(
+          env('PUSHER_APP_KEY'),
+          env('PUSHER_APP_SECRET'),
+          env('PUSHER_APP_ID'),
+          $options
+      );
+
+      $data = ['from' => $from, 'to' => $to]; // sending from and to user id when pressed enter
+      $pusher->trigger('my-channel', 'my-event', $data);
+    }
+
 
     /**
      * Show the form for creating a new resource.

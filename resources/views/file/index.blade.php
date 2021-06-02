@@ -156,7 +156,7 @@
         </a>
 
 
-        <div id="menu-upload" class="col-lg-6 offset-lg-3 menu menu-box-bottom menu-box-detached rounded-m" data-menu-height="255"
+        <div id="menu-upload" class="menu menu-box-bottom menu-box-detached rounded-m" data-menu-height="255"
             data-menu-effect="menu-parallax">
             <div class="menu-title text-center mt-4">
                 <h4>Create New</h4>

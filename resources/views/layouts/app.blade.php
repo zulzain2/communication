@@ -20,6 +20,9 @@
     <link rel="stylesheet" href="{{URL::to('styles/placeholder/placeholder-loading.min.css')}}">
     <link rel="manifest" href="{{ URL::to('_manifest.json') }}" data-pwa-version="set_in_manifest_and_pwa_js">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ URL::to('app/icons/icon-192x192.png') }}">
+
+    {{-- Pusher --}}
+    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
 </head>
 
 <body class="theme-light" data-highlight="highlight-red" data-gradient="body-default">
@@ -30,14 +33,37 @@
 
     <div id="page">
 
+<<<<<<< HEAD
         <div id="custom"></div>
 
+=======
+        {{-- <div class="header header-fixed header-logo-center check-auth csrf-token">
+
+            @if (isset($topBarTitle))
+                <a href="index.html" class="header-title">{{ $topBarTitle }}</a>
+            @else
+                <a href="#" class="header-title">Undefined</a>
+            @endif
+
+            @if (isset($topBarPrevUrl))
+                <a href="#" data-back-button="" class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
+            @else
+
+            @endif
+
+            <a href="notification" class="header-icon header-icon-4">
+                <i id="notification" class="fas fa-bell"></i>
+            </a>
+        </div> --}}
+>>>>>>> parent of ad1abd2... ui
         <div id="footer-bar" class="footer-bar-1">
+
             <a id="home" href="home"><i class="fa fa-home"></i><span>Home</span></a>
             <a id="chat" href="chat"><i class="fas fa-comments"></i><span>Chat</span></a>
             <a id="meet" href="meet"><i class="fas fa-video"></i><span>Meeting</span></a>
             <a id="file" href="file"><i class="fas fa-folder"></i><span>My File</span></a>
             <a id="setting" href="#" data-menu="menu-settings"><i class="fa fa-cog"></i><span>Settings</span></a>
+
         </div>
 
         <div class="page-content header-clear-small check-auth csrf-token">
