@@ -1,21 +1,22 @@
 .name-image {
-  margin-top: 0.5%;
+  margin-top: 1%;
+  margin-right: 2%;
   width: 45px;
   height: 45px;
   color: #ffffff;
   border-radius: 50%;
   font-weight: bold;
-  padding-top: 10px;
   display: inline-block;
   text-align: center;
 }
 li.user{
+  display: flex;
   cursor: pointer;
-  padding-bottom:15%;
+  padding-bottom:3%;
 }
 .information{
-  margin-left: 25%;
-  margin-top: -19%;
+  margin-top: -4.5%;
+  margin-left: 7%;
 }
 .c {
   position: fixed;
@@ -42,11 +43,12 @@ li.user{
   margin-top: 6px;
 }
 .c .chat-header .chat-with {
-  margin-left: 5%;
-  margin-top: -35px;
+  margin-left: 10%;
+  margin-top: -32px;
   font-weight: bold;
   font-size: 16px;
 }
+
 .c .chat-header .chat-num-messages {
   color: #92959E;
 }
@@ -113,4 +115,22 @@ ul.no-bullet{
   margin: 0;
 }
 
-
+@media only screen and (max-width: 500px) {
+  .name-image {
+    margin-top: 3%;
+    margin-right: 2%;
+    width: 45px;
+    height: 45px;
+    color: #ffffff;
+    border-radius: 50%;
+    font-weight: bold;
+    display: inline-block;
+    text-align: center;
+  }
+  .c .chat-header .chat-with {
+    margin-left: 27%;
+    margin-top: -32px;
+    font-weight: bold;
+    font-size: 16px;
+  }
+}

@@ -33,29 +33,8 @@
 
     <div id="page">
 
-<<<<<<< HEAD
         <div id="custom"></div>
 
-=======
-        {{-- <div class="header header-fixed header-logo-center check-auth csrf-token">
-
-            @if (isset($topBarTitle))
-                <a href="index.html" class="header-title">{{ $topBarTitle }}</a>
-            @else
-                <a href="#" class="header-title">Undefined</a>
-            @endif
-
-            @if (isset($topBarPrevUrl))
-                <a href="#" data-back-button="" class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
-            @else
-
-            @endif
-
-            <a href="notification" class="header-icon header-icon-4">
-                <i id="notification" class="fas fa-bell"></i>
-            </a>
-        </div> --}}
->>>>>>> parent of ad1abd2... ui
         <div id="footer-bar" class="footer-bar-1">
 
             <a id="home" href="home"><i class="fa fa-home"></i><span>Home</span></a>

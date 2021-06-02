@@ -21,7 +21,8 @@ class ChatController extends Controller
     public function index()
     {
         $topBarTitle = 'Chat';
-        return view('chat.index')->with(compact('topBarTitle'));
+        $users = User::where('id','!=',auth()->user()->id)->get();
+        return view('chat.index')->with(compact('topBarTitle','users'));
     }
 
     //function to get the message.
@@ -112,8 +113,8 @@ class ChatController extends Controller
         $this->data['friendInfo'] = $friendInfo;
         $this->data['myInfo'] = $myInfo;
         $this->data['user_id'] = $user_id;
-        // $topBarTitle = 'Chat Show';
-        // $topBarPrevUrl = 'chat';
+        $topBarTitle = 'Chat Show';
+        $topBarPrevUrl = 'chat';
         return view('chat.show')->with($this->data);
     }
 

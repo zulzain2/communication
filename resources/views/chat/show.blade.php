@@ -14,7 +14,7 @@
     </div> <!-- end chat-header -->
 </div>
 <div class="clearfix"></div>
-<div class="content">
+<div class="content" style="margin-top:70px">
     <p class="text-center mb-0 font-11">Yesterday, 1:45 AM</p>
     <div class="speech-bubble speech-right color-black">
         These are chat bubbles, right? They look awesome don't they?
