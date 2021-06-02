@@ -33,10 +33,10 @@
 
     <div id="page">
 
-<<<<<<< HEAD
+
         <div id="custom"></div>
 
-=======
+
         {{-- <div class="header header-fixed header-logo-center check-auth csrf-token">
 
             @if (isset($topBarTitle))
@@ -55,7 +55,7 @@
                 <i id="notification" class="fas fa-bell"></i>
             </a>
         </div> --}}
->>>>>>> parent of ad1abd2... ui
+
         <div id="footer-bar" class="footer-bar-1">
 
             <a id="home" href="home"><i class="fa fa-home"></i><span>Home</span></a>
