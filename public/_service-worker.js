@@ -1,10 +1,10 @@
-var CACHE_STATIC_NAME = 'static-v21';
-var CACHE_DYNAMIC_NAME = 'dynamic-v21';
+var CACHE_STATIC_NAME = 'static-v23';
+var CACHE_DYNAMIC_NAME = 'dynamic-v23';
 var STATIC_FILES = [
     '/offline',
     '/splashscreen',
     '/home',
-    '/chat',
+    // '/chat',
     '/meet',
     '/file',
     '/scripts/plugins/meet/external_api.js',

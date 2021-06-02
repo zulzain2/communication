@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Validator;
 class MeetController extends Controller
 {
     public function __construct() {
-        $this->middleware('auth')->except('index' , 'indexpublic' , 'storeMeetingNotStart' , 'storeMeetingInProgress' , 'storeMeetingPass');
+        $this->middleware('auth')->except('index' , 'indexpublic' , 'storeMeetingNotStart' , 'storeMeetingInProgress' , 'storeMeetingPass' , 'getMeetingInProgress');
     }
 
     /**
@@ -22,13 +22,12 @@ class MeetController extends Controller
      */
     public function index()
     {
-        $topBarTitle = 'Meet';
 
         // $meetinglogs = MeetingLog::where([
 		// 	['id_users', '=' , auth()->user()->id]
 		// ])->orderByDesc('datetime')->get();
 
-        return view('meet.index')->with(compact('topBarTitle'));
+        return view('meet.index');
     }
 
     public function indexpublic()
