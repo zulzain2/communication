@@ -14,10 +14,10 @@
                                 Login to get the complete tools offer by us.
                             </p>
                             <form class="needs-validation" novalidate id="joinMeetingForm">
-                                <label for="meetingNameJoin" class="text-uppercase font-700 font-10 text-center w-100"
-                                    style="background-color:transparent !important">Room Name</label>
+                                <label for="meetingIdJoin" class="text-uppercase font-700 font-10 text-center w-100"
+                                    style="background-color:transparent !important">Room ID</label>
                                 <div class="input-style input-style-always-active no-borders no-icon mb-4">
-                                    <input type="text" id="meetingNameJoin" class="form-control text-center"
+                                    <input type="text" id="meetingIdJoin" class="form-control text-center"
                                         style="font-size: 22px!important;font-weight: bold !important;border: none;"
                                         required readonly>
 
