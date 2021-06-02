@@ -105,7 +105,43 @@
 
         <script type="text/javascript" src="{{ URL::to('scripts/default.js') }}"></script>
    
-     
+        {{-- Unregister Exist Service Worker --}}
+        <script>
+            window.addEventListener('load' , () => {
+                console.log('SW - Unregister Initiate');
+                unregisterSW();
+            })
+
+            async function unregisterSW(){
+
+                if (typeof navigator.serviceWorker === "undefined") return; // to prevent js error
+
+                navigator.serviceWorker.getRegistrations().then(function (registrations) {
+                if (!registrations.length) {
+                    console.log('SW - No serviceWorker registrations found.')
+                }
+                else
+                {
+                    for(let registration of registrations) {
+                        registration.unregister().then(function (boolean) {
+                        console.log(
+                            (boolean ? 'Successfully unregistered' : 'Failed to unregister'), 'ServiceWorkerRegistration\n' +
+                            (registration.installing ? '  .installing.scriptURL = ' + registration.installing.scriptURL + '\n' : '') +
+                            (registration.waiting ? '  .waiting.scriptURL = ' + registration.waiting.scriptURL + '\n' : '') +
+                            (registration.active ? '  .active.scriptURL = ' + registration.active.scriptURL + '\n' : '') +
+                            '  .scope: ' + registration.scope + '\n'
+                        )
+                        })
+                    }
+                }
+                })
+
+                const allCaches = await caches.keys();
+                const cacheDeletionPromises = allCaches.map(cache => caches.delete(cache));
+                console.log('SW - Delete all cache.')
+                await Promise.all([ ...cacheDeletionPromises]);
+            }
+        </script>
 
         @stack('scripts')
 
