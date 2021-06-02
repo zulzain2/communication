@@ -95,7 +95,7 @@
 
                                 <label for="phone_number" class="color-highlight text-uppercase font-700 font-10 text-center w-100" style="background-color:transparent !important">Phone Number</label>
                                 <div class="input-style input-style-always-active no-borders no-icon mb-4">
-                                    <input type="tel" pattern="[0-9]{11}" id="phone_number" name="phone_number" class="form-control text-center" placeholder="Input phone no. eg. 01234567890" required>
+                                    <input type="tel" pattern="[0-9]{9,14}" id="phone_number" name="phone_number" class="form-control text-center" placeholder="Input phone no. eg. 01234567890" required>
                                     
                                     <i class="fa fa-times disabled invalid color-red-dark"></i>
                                     <i class="fa fa-check disabled valid color-green-dark"></i>
