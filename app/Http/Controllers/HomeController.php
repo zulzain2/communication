@@ -17,8 +17,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $topBarTitle = 'Home';
-        return view('home.index')->with(compact('topBarTitle'));
+
+        return view('home.index');
     }
 
     /**

@@ -22,13 +22,12 @@ class MeetController extends Controller
      */
     public function index()
     {
-        $topBarTitle = 'Meet';
 
         // $meetinglogs = MeetingLog::where([
 		// 	['id_users', '=' , auth()->user()->id]
 		// ])->orderByDesc('datetime')->get();
 
-        return view('meet.index')->with(compact('topBarTitle'));
+        return view('meet.index');
     }
 
     public function indexpublic()

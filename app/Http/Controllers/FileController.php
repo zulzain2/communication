@@ -17,8 +17,8 @@ class FileController extends Controller
      */
     public function index()
     {
-        $topBarTitle = 'File';
-        return view('file.index')->with(compact('topBarTitle'));
+
+        return view('file.index');
     }
 
     /**
