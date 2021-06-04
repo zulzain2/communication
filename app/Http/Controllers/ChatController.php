@@ -6,6 +6,7 @@ use Pusher\Pusher;
 use App\Models\Chat;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 
 class ChatController extends Controller
@@ -20,8 +21,15 @@ class ChatController extends Controller
      */
     public function index()
     {
+
+      // count how many message are unread from the selected user
+        $users = DB::select("select users.id, users.name, users.phone_number, count(is_read) as unread
+        from users LEFT  JOIN  chats ON users.id = chats.from and is_read = 0 and chats.to = " .auth()->user()->id . "
+        where users.id != " .auth()->user()->id . "
+        group by users.id, users.name, users.phone_number");
+        // dd($users);
         $topBarTitle = 'Chat';
-        $users = User::where('id','!=',auth()->user()->id)->get();
+        // $users = User::where('id','!=',auth()->user()->id)->get();
         return view('chat.index')->with(compact('topBarTitle','users'));
     }
 
@@ -43,7 +51,7 @@ class ChatController extends Controller
           $query->where('from', $my_id)->where('to', $user_id);
       })->get();
       //
-      return view('chat.messages')->with(compact('chat_message','friendInfo'));
+      return view('chat.show')->with(compact('chat_message','friendInfo'));
     }
 
     //function to send the message
@@ -106,16 +114,7 @@ class ChatController extends Controller
      */
     public function show($user_id)
     {
-        $users = User::where('id','!=',Auth()->id())->get();
-        $friendInfo = User::findOrFail($user_id);
-        $myInfo = User::find(auth()->id());
-        $this->data['users'] = $users;
-        $this->data['friendInfo'] = $friendInfo;
-        $this->data['myInfo'] = $myInfo;
-        $this->data['user_id'] = $user_id;
-        $topBarTitle = 'Chat Show';
-        $topBarPrevUrl = 'chat';
-        return view('chat.show')->with($this->data);
+
     }
 
     /**

@@ -27,7 +27,7 @@
       <div class="card card-style ms-3 mt-3" style="height:100%;">
         <div class="content">
           <div class="list-group list-custom-large">
-            @if ($users->count())
+            {{-- @if ($users->count()) --}}
               @foreach ($users as $user)
                 <a href="{{ route('chat.show',$user->id) }}">
                   <div class="name-image bg-highlight">
@@ -35,11 +35,13 @@
                   </div>
                   <span>{{ $user->name }}</span>
                   <strong>A powerful Mobile Template</strong>
+                    @if($user->unread)
+                        <span class="badge rounded-pill bg-fade-highlight-light color-highlight" id="pending">{{ $user->unread }}</span>
+                    @endif
                   <span class="badge bg-dark-light mt-2">12:15 PM</span>
-                  <span class="badge rounded-pill bg-fade-highlight-light color-highlight">06</span>
+                  {{-- <span class="badge rounded-pill bg-fade-highlight-light color-highlight">06</span> --}}
               </a>
               @endforeach
-            @endif
           </div>
 
         {{-- <div class="col-md-8 col-lg-9 col-sm-12 d-none d-lg-block" style="height:82vh;overflow-y: scroll;">
@@ -107,6 +109,7 @@
   </div>
 @endsection
 @push('scripts')
-
+<script>
+</script>
 
 @endpush

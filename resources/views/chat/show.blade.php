@@ -1,55 +1,29 @@
 @extends('layouts.app')
 
 @section('content')
-
-<div class="c">
-    <div class="chat-header clearfix">
-      <a href="/chat">
-        <i class="fas fa-chevron-left"></i>
-      </a>
-      <div class="name-image bg-highlight">
-        {{substr($friendInfo->name,0,1) }}
-      </div>
-        <div class="chat-with">{{ $friendInfo->name }}</div>
-    </div> <!-- end chat-header -->
-</div>
-<div class="clearfix"></div>
-<div class="content" style="margin-top:70px">
-    <p class="text-center mb-0 font-11">Yesterday, 1:45 AM</p>
-    <div class="speech-bubble speech-right color-black">
-        These are chat bubbles, right? They look awesome don't they?
-    </div>
-    <div class="clearfix"></div>
-    <div class="speech-bubble speech-left bg-highlight">
-        Yeap!
-    </div>
-    <div class="clearfix"></div>
-    <div class="speech-bubble speech-left bg-highlight">
-        They also expand to a certain point, just like the ones that Mobile Chat apps have!
-    </div><div class="clearfix"></div>
-    <em class="speech-read mb-3">Delivered & Read - 07:18 PM</em>
-    <div class="clearfix"></div>
-    <div class="speech-bubble speech-right color-black">
-        Awesome! Images too?
-    </div>
-    <div class="clearfix"></div>
-    <div class="speech-bubble speech-right color-black">
-        These are chat bubbles, right? They look awesome don't they?
-    </div>
-    <div class="clearfix"></div>
-    <div class="speech-bubble speech-left bg-highlight">
-        Yeap!
-    </div>
-    <div class="clearfix"></div>
-    <div class="speech-bubble speech-left bg-highlight">
-        They also expand to a certain point, just like the ones that Mobile Chat apps have!
-    </div><div class="clearfix"></div>
-    <em class="speech-read mb-3">Delivered & Read - 07:18 PM</em>
-    <div class="clearfix"></div>
-    <div class="speech-bubble speech-right color-black">
-        Awesome! Images too?
-    </div>
-
+<div class="header header-fixed header-logo-center">
+  <a href="" class="header-title">
+    <span class="name-image bg-highlight">
+      {{substr($friendInfo->name,0,1) }}
+    </span>
+    {{ $friendInfo->name }}
+  </a>
+  <a href="/chat" data-back-button="" class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
+  <a href="#" data-toggle-theme="" class="header-icon header-icon-4"><i class="fas fa-lightbulb"></i></a>
+  </div>
+<div class="content" style="height:83vh;overflow-y: scroll;"  id="context" >
+  <ul class="no-bullet"  style="margin-top: 5%;">
+    @foreach($chat_message as $message)
+      <li class="clearfix">
+          {{--if message from id is equal to auth id then it is sent by logged in user --}}
+        <div class="{{ ($message->from == Auth::id()) ? 'speech-bubble speech-left bg-highlight' : 'speech-bubble speech-right color-black' }}" >
+              {{ $message->message }}
+              <br>
+            <small>{{ date('h:i a', strtotime($message->created_at)) }}</small>
+        </div>
+      </li>
+    @endforeach
+  </ul>
 </div>
 @endsection
 
@@ -59,9 +33,9 @@
         <a href="#" data-menu="menu-upload" class="bg-gray-dark ms-2"><i class="fa fa-plus pt-2"></i></a>
         </div>
         <div class="flex-fill speach-input">
-        <input type="text" class="form-control" placeholder="Enter your Message here">
+        <input type="text" id="myInput" class="form-control" placeholder="Enter your Message here">
         </div>
-        <div class="ms-3 speach-icon">
+        <div class="ms-3 speach-icon" id="submit">
         <a href="#" class="bg-blue-dark me-2"><i class="fa fa-arrow-up pt-2"></i></a>
         </div>
     </div>
@@ -99,13 +73,59 @@
 
 
 
-
-{{-- @push('scripts')
-
+@push('scripts')
 <script>
-    $(document).ready(function() {
-        $('#footer-bar').hide();
-    });
-    </script>
 
-@endpush --}}
+  var receiver_id = "{{ $friendInfo->id }}";
+  var my_id = "{{ Auth()->id() }}";
+  $(document).ready(function(){
+  scrollToBottomFunc();
+    $.ajaxSetup({
+      headers:{
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+    $(document).on('keypress','#myInput',function(e){
+      var message = $(this).val()
+      var datastr = "receiver_id=" + receiver_id + "&message=" + message;
+      if (e.which == 13 && message != '' && receiver_id != '') {
+        $(this).val('');
+        sendMessage(datastr);
+      }
+    })
+    // Get value on button click and show alert
+    $("#submit").click(function(){
+        var str = $("#myInput").val();
+        $('#myInput').val('')
+        var datastr = "receiver_id=" + receiver_id + "&message=" + str;
+        sendMessage(datastr);
+    });
+  })
+
+  function sendMessage(datastr){
+    $.ajax({
+      type:'post',
+      url: '/message',
+      data: datastr,
+      cache: false,
+      success:function(data){
+
+      },
+      error: function(jqXHR, status, err){
+      },
+      complete: function(data) {
+        console.log(data);
+        scrollToBottomFunc();
+      }
+    })
+  }
+  function scrollToBottomFunc() {
+    $('#context').animate({
+        scrollTop: $('#context').get(0).scrollHeight
+    }, 0);
+  }
+
+</script>
+
+@endpush
+

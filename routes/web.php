@@ -66,7 +66,7 @@ Route::resource('notification', 'App\Http\Controllers\NotificationController');
 //Chat Controller
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //Chat  View Resources
-// Route::get('chat/{id}',[ChatController::class, 'getMessage'])->name('chat');
+Route::get('chat/{id}',[ChatController::class, 'getMessage'])->name('chat');
 Route::post('message/',[ChatController::class, 'sendMessage']);
 Route::get('chat/{user_id}',[ChatController::class, 'show'])->name('chat.show');
 Route::resource('chat', 'App\Http\Controllers\ChatController');
