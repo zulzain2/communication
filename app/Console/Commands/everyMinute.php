@@ -74,7 +74,7 @@ class everyMinute extends Command
 
                 if($noti->module == 'meet'){
                     $meetinglog = MeetingLog::find($params->id_module);
-                    $meetinglog->status = 'P';
+                    $meetinglog->status = 'S';
                     $meetinglog->save();
                 }
                 

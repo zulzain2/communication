@@ -42,11 +42,11 @@ setTimeout(function() {
                 }
 
                 function shareMeetingBuilder(room_name){
-                    $('#copy-meet-link').html(window.location.hostname + '/meetroom?roomName=' + room_name);
-                    $('#whatsapp-link-schedule').attr('onclick' , 'location.href="whatsapp://send?text='+window.location.hostname+'/meetroom?roomName='+room_name+'"');
-                    $('#mail-link-schedule').attr('onclick' , 'location.href="mailto:?body='+window.location.hostname+'/meetroom?roomName='+room_name+'"');
-                    $('#gmail-link-schedule').attr('onclick' , 'window.open("https://mail.google.com/mail/u/0/?fs=1&su=Join+Communicationt+Meeting&body='+window.location.hostname+'/meetroom?roomName='+room_name+'&tf=cm","_blank")');
-                    $('#outlook-link-schedule').attr('onclick' , 'window.open("https://outlook.office.com/mail/deeplink/compose?subject=Join+Communicationt+Meeting&body='+window.location.hostname+'/meetroom?roomName='+room_name+'","_blank")');
+                    $('#copy-meet-link').html(window.location.hostname + '/meetroom?roomId=' + room_name);
+                    $('#whatsapp-link-schedule').attr('onclick' , 'location.href="whatsapp://send?text='+window.location.hostname+'/meetroom?roomId='+room_name+'"');
+                    $('#mail-link-schedule').attr('onclick' , 'location.href="mailto:?body='+window.location.hostname+'/meetroom?roomId='+room_name+'"');
+                    $('#gmail-link-schedule').attr('onclick' , 'window.open("https://mail.google.com/mail/u/0/?fs=1&su=Join+Communicationt+Meeting&body='+window.location.hostname+'/meetroom?roomId='+room_name+'&tf=cm","_blank")');
+                    $('#outlook-link-schedule').attr('onclick' , 'window.open("https://outlook.office.com/mail/deeplink/compose?subject=Join+Communicationt+Meeting&body='+window.location.hostname+'/meetroom?roomId='+room_name+'","_blank")');
 
                     // $('#copyMeet').attr('data-meeting-name', room_name);
                     // $('#meetEmail').attr('data-meeting-name', room_name);
@@ -196,12 +196,12 @@ setTimeout(function() {
                             //for invite meeting button while in meeting
                             $('#invite-meeting-name').html(decodeURIComponent(data.roomName));
                             $('#invite-invitor').html(data.displayName);
-                            $('#invite-link').html(window.location.hostname + '/meetroom?roomName=' + data.roomName);
+                            $('#invite-link').html(window.location.hostname + '/meetroom?roomId=' + data.roomName);
                             
-                            $('#whatsapp-link').attr('onclick' , 'location.href="whatsapp://send?text='+window.location.hostname+'/meetroom?roomName='+data.roomName+'"');
-                            $('#mail-link').attr('onclick' , 'location.href="mailto:?body='+window.location.hostname+'/meetroom?roomName='+data.roomName+'"');
-                            $('#gmail-link').attr('onclick' , 'window.open("https://mail.google.com/mail/u/0/?fs=1&su=Join+Communicationt+Meeting&body='+window.location.hostname+'/meetroom?roomName='+data.roomName+'&tf=cm","_blank")');
-                            $('#outlook-link').attr('onclick' , 'window.open("https://outlook.office.com/mail/deeplink/compose?subject=Join+Communicationt+Meeting&body='+window.location.hostname+'/meetroom?roomName='+data.roomName+'","_blank")');
+                            $('#whatsapp-link').attr('onclick' , 'location.href="whatsapp://send?text='+window.location.hostname+'/meetroom?roomId='+data.roomName+'"');
+                            $('#mail-link').attr('onclick' , 'location.href="mailto:?body='+window.location.hostname+'/meetroom?roomId='+data.roomName+'"');
+                            $('#gmail-link').attr('onclick' , 'window.open("https://mail.google.com/mail/u/0/?fs=1&su=Join+Communicationt+Meeting&body='+window.location.hostname+'/meetroom?roomId='+data.roomName+'&tf=cm","_blank")');
+                            $('#outlook-link').attr('onclick' , 'window.open("https://outlook.office.com/mail/deeplink/compose?subject=Join+Communicationt+Meeting&body='+window.location.hostname+'/meetroom?roomId='+data.roomName+'","_blank")');
                             ///////////////////////////////////////////////////////////////////////
 
                             var currentdate = new Date();
@@ -298,11 +298,11 @@ setTimeout(function() {
                 if (document.querySelector('#meetPublic')) {
                         
                     var url = new URL(window.location.href);
-                    var roomName = url.searchParams.get("roomName");
+                    var roomId = url.searchParams.get("roomId");
                 
-                    if(roomName){
-                        $('#meetingIdJoin').val(''+roomName+'');
-                        $('#loginFirst').attr("href", '/login?prevUrl=/meet?roomName='+roomName+'')
+                    if(roomId){
+                        $('#meetingIdJoin').val(''+roomId+'');
+                        $('#loginFirst').attr("href", '/login?prevUrl=/meet?roomId='+roomId+'')
                     }
 
                     $('body').removeClass('theme-light');
@@ -311,13 +311,13 @@ setTimeout(function() {
                 ///////////////////////////////////////////////////////////////////////
 
                 ///////////////////////////////////////////////////////////////////////
-                //make join meeting tab active when roomName parameters available in link
+                //make join meeting tab active when roomId parameters available in link
                 var url = new URL(window.location.href);
-                var roomName = url.searchParams.get("roomName");
-                if(roomName)
+                var roomId = url.searchParams.get("roomId");
+                if(roomId)
                 {
                     $('#meeting-tab-1').removeClass('bg-highlight no-click');
-                    $('#meetingIdJoin').val(roomName);
+                    $('#meetingIdJoin').val(roomId);
                     
                     $('#meeting-tab-1').addClass('collapsed');
 

@@ -104,11 +104,11 @@ if (document.querySelector('#footer-bar')) {
                 {
                     // console.log('Authenticated');
                     var url = new URL(window.location.href);
-                    var roomName = url.searchParams.get("roomName");
-                    if(roomName){
-                        // window.location.href = 'meet?roomName='+roomName+'';
+                    var roomId = url.searchParams.get("roomId");
+                    if(roomId){
+                        // window.location.href = 'meet?roomId='+roomId+'';
                         swup.loadPage({
-                            url: 'meet?roomName='+roomName+'',
+                            url: 'meet?roomId='+roomId+'',
                             method: 'GET',
                             customTransition: '' 
                         });
