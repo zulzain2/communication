@@ -23,6 +23,8 @@
 
     {{-- Pusher --}}
     <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+    <script src="https://cdn.socket.io/3.1.3/socket.io.min.js" integrity="sha384-cPwlPLvBTa3sKAgddT6krw0cJat7egBga3DJepJyrLl4Q9/5WLra3rrnMcyTyOnh" crossorigin="anonymous"></script>
+
 </head>
 
 <body class="theme-light" data-highlight="highlight-red" data-gradient="body-default">
