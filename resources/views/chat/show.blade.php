@@ -115,6 +115,7 @@
         message
       }) => {
         socket.emit('send_message', {
+          my_id,
           receiver_id,
           message
         })

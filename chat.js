@@ -12,14 +12,17 @@ const io = require('socket.io')(server, {
 
 io.on('connection', (socket) => {
   socket.on('connect_chat', (data) => {
-    socket.join(data.user_id);
+    socket.join(''+data.user_id + data.receiver+'');
     io.in(data.user_id).emit('connected', {
       'message': 'connected'
     })
   })
 
   socket.on('send_message', (data) => {
-    io.to(data.receiver_id).emit('receive_message', data.message);
+    io.to(''+data.receiver_id+data.my_id+'')
+    .emit('receive_message', data.message);
+
+    // io.to(data.receiver_id).emit('receive_message', data.message);
     // io.in(data.receiver_id).emit('receive_message', data.message)
   })
 
