@@ -156,30 +156,22 @@
         </a>
 
 
-        <div id="menu-upload" class="menu menu-box-bottom menu-box-detached rounded-m" data-menu-height="255"
+        <div id="menu-upload" class="menu menu-box-bottom menu-box-detached rounded-m" data-menu-height="175"
             data-menu-effect="menu-parallax">
             <div class="menu-title text-center mt-4">
-                <h4>Create New</h4>
+                <h4>File Management</h4>
+            </div>
+            <div class="list-group list-custom-small ps-2 me-4">
+                <a href="/file/create">
+                    <i class="font-14 fa fa-file color-gray-dark"></i>
+                    <span class="font-13">Upload File</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
             </div>
             <div class="list-group list-custom-small ps-2 me-4">
                 <a href="#">
-                    <i class="font-14 fa fa-file color-gray-dark"></i>
-                    <span class="font-13">File</span>
-                    <i class="fa fa-angle-right"></i>
-                </a>
-                <a href="#">
-                    <i class="font-14 fa fa-image color-gray-dark"></i>
-                    <span class="font-13">Photo</span>
-                    <i class="fa fa-angle-right"></i>
-                </a>
-                <a href="#">
-                    <i class="font-14 fa fa-video color-gray-dark"></i>
-                    <span class="font-13">Video</span>
-                    <i class="fa fa-angle-right"></i>
-                </a>
-                <a href="#">
-                    <i class="font-14 fa fa-user color-gray-dark"></i>
-                    <span class="font-13">Camera</span>
+                    <i class="font-14 fa fa-folder-plus color-gray-dark"></i>
+                    <span class="font-13">Create Folder</span>
                     <i class="fa fa-angle-right"></i>
                 </a>
             </div>

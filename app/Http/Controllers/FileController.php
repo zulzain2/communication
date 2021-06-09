@@ -28,7 +28,7 @@ class FileController extends Controller
      */
     public function create()
     {
-        //
+        return view('file.create');
     }
 
     /**
@@ -39,7 +39,7 @@ class FileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**
