@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="{{URL::to('styles/placeholder/placeholder-loading.min.css')}}">
     <link rel="manifest" href="{{ URL::to('_manifest.json') }}" data-pwa-version="set_in_manifest_and_pwa_js">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ URL::to('app/icons/icon-192x192.png') }}">
+    <link href="{{ URL::to('scripts/plugins/dropify/css/dropify.min.css') }}" rel="stylesheet">
 
     {{-- Pusher --}}
     <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
@@ -39,10 +40,10 @@
 
         <div id="footer-bar" class="footer-bar-1">
 
-            <a id="home" href="home"><i class="fa fa-home"></i><span>Home</span></a>
-            <a id="chat" href="chat"><i class="fas fa-comments"></i><span>Chat</span></a>
-            <a id="meet" href="meet"><i class="fas fa-video"></i><span>Meeting</span></a>
-            <a id="file" href="file"><i class="fas fa-folder"></i><span>My File</span></a>
+            <a id="home" href="/home"><i class="fa fa-home"></i><span>Home</span></a>
+            <a id="chat" href="/chat"><i class="fas fa-comments"></i><span>Chat</span></a>
+            <a id="meet" href="/meet"><i class="fas fa-video"></i><span>Meeting</span></a>
+            <a id="file" href="/file"><i class="fas fa-folder"></i><span>My File</span></a>
             <a id="setting" href="#" data-menu="menu-settings"><i class="fa fa-cog"></i><span>Settings</span></a>
 
         </div>

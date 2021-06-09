@@ -1,8 +1,5 @@
 @extends('layouts.app')
-@push('styles')
-<style></style>
-  <link href="{{ asset('scripts/plugins/dropify/css/dropify.min.css') }}" rel="stylesheet">
-@endpush
+
 @section('content')
 <div class="row">
   <div class="col-xl-8 offset-xl-2 col-lg-12 col-sm-12">
