@@ -28,7 +28,7 @@
 
                                 <br>
 
-                                <a id="loginFirst" href="#"
+                                <a id="loginFirst" href=""
                                     class="btn btn-3d btn-m btn-full mb-3 rounded-xs text-uppercase font-900 shadow-s border-red-dark bg-red-light">Connect
                                     First</a>
                                 <br>
