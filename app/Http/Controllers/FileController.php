@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\FileFolder;
 use Illuminate\Http\Request;
 
 class FileController extends Controller
@@ -17,8 +18,11 @@ class FileController extends Controller
      */
     public function index()
     {
+        
+        $folders = FileFolder::where('id_users','=',Auth()->user()->id)->get();
 
-        return view('file.index');
+        return view('file.index')->with(compact('folders'));
+
     }
 
     /**
