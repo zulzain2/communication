@@ -93,6 +93,12 @@ Route::resource('meet', 'App\Http\Controllers\MeetController');
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //File Controller
 //////////////////////////////////////////////////////////////////////////////////////////////////
-Route::post('/file/store','App\Http\Controllers\FileController@store');
+Route::post('file/store','App\Http\Controllers\FileController@store');
+Route::post('file/storeFolder','App\Http\Controllers\FileController@storeFolder')->name('file.storeFolder');
+Route::get('file/createfolder', 'App\Http\Controllers\FileController@createFolder');
+Route::get('file/{id}/createFile', 'App\Http\Controllers\FileController@create');
+Route::post('file/{id}/storeFile','App\Http\Controllers\FileController@storeFile')->name('file.storeFile');
+
+
 Route::resource('file', 'App\Http\Controllers\FileController');
 //////////////////////////////////////////////////////////////////////////////////////////////////

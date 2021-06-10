@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Ramsey\Uuid\Uuid;
 use App\Models\FileFolder;
+use App\Models\FileStorage;
 use Illuminate\Http\Request;
 
 class FileController extends Controller
@@ -30,9 +32,10 @@ class FileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        return view('file.create');
+      $id_folder = $id;
+        return view('file.create')->with(compact('id_folder'));
     }
 
     /**
@@ -43,7 +46,7 @@ class FileController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+      
     }
 
     /**
@@ -54,7 +57,10 @@ class FileController extends Controller
      */
     public function show($id)
     {
-        //
+      $files = FileStorage::where('id_folders','=',$id)->get();
+      $id_folder = $id;
+
+      return view('file.show')->with(compact('files','id_folder'));
     }
 
     /**
@@ -90,4 +96,50 @@ class FileController extends Controller
     {
         //
     }
+
+    public function createFolder(){
+        return view('file.folder.create');
+
+    }
+
+    public function storeFolder(Request $request){
+        
+        $add = New FileFolder;
+        $add->id = Uuid::uuid4()->getHex();
+        $add->id_users = auth()->user()->id;
+        $add->name = $request->name;
+        $add->description = $request->description ? $request->description : "n/a";
+        $add->save();
+
+        $folders = FileFolder::where('id_users','=',Auth()->user()->id)->get();
+
+        return redirect()->action([FileController::class, 'index']);
+    }
+
+    public function storeFile(Request $request, $id){
+
+      $new = New FileStorage;
+      $new->id = Uuid::uuid4()->getHex();
+      $new->id_users = auth()->user()->id;
+      $new->name = $request->name;
+      $new->id_folders = $id;
+      $new->id_status = '1';
+
+      //file
+      if ($request->hasFile('file')) {
+
+        $file = $request->file('file');
+        $path = $file->store('img/file', 'public');
+
+        $new->pathfile = $path;
+        } else {
+            $new->pathfile = '';
+        }
+
+      $new->save();
+
+      return redirect()->action([FileController::class, 'index']);
+
+    }
+  
 }

@@ -96,22 +96,22 @@
         </a>
 
 
-        <div id="menu-upload" class="menu menu-box-bottom menu-box-detached rounded-m" data-menu-height="175"
+        <div id="menu-upload" class="menu menu-box-bottom menu-box-detached rounded-m" data-menu-height="135"
             data-menu-effect="menu-parallax">
             <div class="menu-title text-center mt-4">
                 <h4>File Management</h4>
             </div>
-            <div class="list-group list-custom-small ps-2 me-4">
+            {{--  <div class="list-group list-custom-small ps-2 me-4">
                 <a href="/file/create">
                     <i class="font-14 fa fa-file color-gray-dark"></i>
                     <span class="font-13">Upload File</span>
                     <i class="fa fa-angle-right"></i>
                 </a>
-            </div>
+            </div>  --}}
             <div class="list-group list-custom-small ps-2 me-4">
-                <a href="#">
+                <a href="/file/createfolder">
                     <i class="font-14 fa fa-folder-plus color-gray-dark"></i>
-                    <span class="font-13">Create Folder</span>
+                    <span class="font-13">Create New Folder</span>
                     <i class="fa fa-angle-right"></i>
                 </a>
             </div>
