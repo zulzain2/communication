@@ -56,13 +56,13 @@ setTimeout(function() {
                                 if(results.status == 'success'){
                                     
                                     $('#connectBtn').removeClass('off-btn').trigger('classChange');
-                                    // window.location.href = '/verifyOtp?tempuser_id='+results.user_id+'&type=login';
+                                    window.location.href = '/verifyOtp?tempuser_id='+results.user_id+'&type=login&prevUrl='+results.prevUrl+'';
 
-                                    swup.loadPage({
-                                        url: '/verifyOtp?tempuser_id='+results.user_id+'&type=login&prevUrl='+results.prevUrl+'', 
-                                        method: 'GET',
-                                        customTransition: '' 
-                                    });
+                                    // swup.loadPage({
+                                    //     url: '/verifyOtp?tempuser_id='+results.user_id+'&type=login&prevUrl='+results.prevUrl+'', 
+                                    //     method: 'GET',
+                                    //     customTransition: '' 
+                                    // });
 
                                 }
                                 else{
@@ -142,13 +142,13 @@ setTimeout(function() {
                                 
                                 $('#registerBtn').removeClass('off-btn').trigger('classChange');
 
-                                // window.location.href = '/verifyOtp?tempuser_id='+results.user_id+'&type=register';
+                                window.location.href = '/verifyOtp?tempuser_id='+results.user_id+'&type=register';
 
-                                swup.loadPage({
-                                    url: '/verifyOtp?tempuser_id='+results.user_id+'&type=register', 
-                                    method: 'GET',
-                                    customTransition: '' 
-                                });
+                                // swup.loadPage({
+                                //     url: '/verifyOtp?tempuser_id='+results.user_id+'&type=register', 
+                                //     method: 'GET',
+                                //     customTransition: '' 
+                                // });
 
                             }
                             else{
@@ -262,19 +262,23 @@ setTimeout(function() {
 
                                     if(results.prevUrl)
                                     {
-                                        swup.loadPage({
-                                            url: results.prevUrl, 
-                                            method: 'GET',
-                                            customTransition: '' 
-                                        });
+                                        window.location.href = results.prevUrl;
+
+                                        // swup.loadPage({
+                                        //     url: results.prevUrl, 
+                                        //     method: 'GET',
+                                        //     customTransition: '' 
+                                        // });
                                     }
                                     else
                                     {
-                                        swup.loadPage({
-                                            url: '/home', 
-                                            method: 'GET',
-                                            customTransition: '' 
-                                        });
+                                        window.location.href = '/home';
+                                        
+                                        // swup.loadPage({
+                                        //     url: '/home', 
+                                        //     method: 'GET',
+                                        //     customTransition: '' 
+                                        // });
                                     }
 
                                     

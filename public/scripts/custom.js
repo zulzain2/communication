@@ -94,11 +94,12 @@ if (document.querySelector('#footer-bar')) {
             if(results === 'true')
             {
                 if(window.location.href.indexOf("splashscreen") > -1){
-                    swup.loadPage({
-                        url: 'home',
-                        method: 'GET',
-                        customTransition: '' 
-                    });
+                    window.location.href = 'home';
+                    // swup.loadPage({
+                    //     url: 'home',
+                    //     method: 'GET',
+                    //     customTransition: '' 
+                    // });
                 }
                 else if(window.location.href.indexOf("meetroom") > -1)
                 {
@@ -106,12 +107,12 @@ if (document.querySelector('#footer-bar')) {
                     var url = new URL(window.location.href);
                     var roomId = url.searchParams.get("roomId");
                     if(roomId){
-                        // window.location.href = 'meet?roomId='+roomId+'';
-                        swup.loadPage({
-                            url: 'meet?roomId='+roomId+'',
-                            method: 'GET',
-                            customTransition: '' 
-                        });
+                        window.location.href = 'meet?roomId='+roomId+'';
+                        // swup.loadPage({
+                        //     url: 'meet?roomId='+roomId+'',
+                        //     method: 'GET',
+                        //     customTransition: '' 
+                        // });
                     }
                 }
             }
@@ -123,11 +124,12 @@ if (document.querySelector('#footer-bar')) {
                 }
                 else
                 {
-                    swup.loadPage({
-                        url: 'login?prevUrl='+window.location.pathname+'',
-                        method: 'GET',
-                        customTransition: '' 
-                    });
+                    window.location.href = 'login?prevUrl='+window.location.pathname+'';
+                    // swup.loadPage({
+                    //     url: 'login?prevUrl='+window.location.pathname+'',
+                    //     method: 'GET',
+                    //     customTransition: '' 
+                    // });
                 }
             }
 
@@ -164,11 +166,12 @@ if (document.querySelector('#footer-bar')) {
 
                             $('.menu-hider').removeClass('menu-active');
 
-                            swup.loadPage({
-                                url: '/login', 
-                                method: 'GET',
-                                customTransition: '' 
-                            });
+                            window.location.href = 'login';
+                            // swup.loadPage({
+                            //     url: '/login', 
+                            //     method: 'GET',
+                            //     customTransition: '' 
+                            // });
 
                         }
                         else{
