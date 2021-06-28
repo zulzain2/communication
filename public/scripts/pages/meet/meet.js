@@ -240,7 +240,15 @@ setTimeout(function() {
                         },
                         participantRoleChanged: function(data) {
                             if(data.role === 'moderator') {
+                                $('#invite_container').show();
+                                $('#meet_iframe').css('height' , '95vh');
+                                $('#invite_container').css('height' , '5vh');
                                 $('#inviteBtn').removeClass('off-btn').trigger('classChange');
+                            }
+                            else{
+                                $('#invite_container').hide();
+                                $('#meet_iframe').css('height' , '100vh');
+                                $('#invite_container').css('height' , '0vh');
                             }
                         },
                         readyToClose: function () {

@@ -211,9 +211,9 @@
 
     <div id="portfolio-2" class="menu menu-box-right" data-menu-width="cover" data-menu-effect="menu-over"
         style="overflow:hidden">
-        <div id="meet_iframe" style="width: 100%;height: 95vh;z-index:999"></div>
+        <div id="meet_iframe" style="width: 100%;height: 100vh;z-index:999"></div>
 
-        <div class="row" style="height:5vh">
+        <div id="invite_container" class="row" style="height:0vh;display:none">
             <div class="col-lg-12">
 
                 <table style="border:none;height:100%;width: 100%;background-color: #656d78!important;">
