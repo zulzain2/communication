@@ -1,19 +1,19 @@
 ///////////////////////////////////////////////////////////////////////
 //for footer
 if (document.querySelector('#footer-bar')) {
-    if (window.location.href.indexOf("home") > -1) 
+    // if (window.location.href.indexOf("home") > -1) 
+    // {
+    //     $('#notification').removeClass('color-highlight');
+    //     $('#home').addClass('active-nav');
+    //     $('#chat').removeClass('active-nav');
+    //     $('#meet').removeClass('active-nav');
+    //     $('#file').removeClass('active-nav');
+    //     $('#setting').removeClass('active-nav');
+    // }
+    if (window.location.href.indexOf("chat") > -1) 
     {
-        $('#notification').removeClass('color-highlight');
-        $('#home').addClass('active-nav');
-        $('#chat').removeClass('active-nav');
-        $('#meet').removeClass('active-nav');
-        $('#file').removeClass('active-nav');
-        $('#setting').removeClass('active-nav');
-    }
-    else if (window.location.href.indexOf("chat") > -1) 
-    {
-        $('#notification').removeClass('color-highlight');
-        $('#home').removeClass('active-nav');
+        // $('#notification').removeClass('color-highlight');
+        // $('#home').removeClass('active-nav');
         $('#chat').addClass('active-nav');
         $('#meet').removeClass('active-nav');
         $('#file').removeClass('active-nav');
@@ -21,8 +21,8 @@ if (document.querySelector('#footer-bar')) {
     }
     else if(window.location.href.indexOf("meet") > -1)
     {
-        $('#notification').removeClass('color-highlight');
-        $('#home').removeClass('active-nav');
+        // $('#notification').removeClass('color-highlight');
+        // $('#home').removeClass('active-nav');
         $('#chat').removeClass('active-nav');
         $('#meet').addClass('active-nav');
         $('#file').removeClass('active-nav');
@@ -30,8 +30,8 @@ if (document.querySelector('#footer-bar')) {
     }
     else if(window.location.href.indexOf("file") > -1)
     {
-        $('#notification').removeClass('color-highlight');
-        $('#home').removeClass('active-nav');
+        // $('#notification').removeClass('color-highlight');
+        // $('#home').removeClass('active-nav');
         $('#chat').removeClass('active-nav');
         $('#meet').removeClass('active-nav');
         $('#file').addClass('active-nav');
@@ -39,22 +39,22 @@ if (document.querySelector('#footer-bar')) {
     }
     else if(window.location.href.indexOf("setting") > -1)
     {
-        $('#notification').removeClass('color-highlight');
-        $('#home').removeClass('active-nav');
+        // $('#notification').removeClass('color-highlight');
+        // $('#home').removeClass('active-nav');
         $('#chat').removeClass('active-nav');
         $('#meet').removeClass('active-nav');
         $('#file').removeClass('active-nav');
         $('#setting').addClass('active-nav');
     }
-    else if(window.location.href.indexOf("notification") > -1)
-    {
-        $('#notification').addClass('color-highlight');
-        $('#home').removeClass('active-nav');
-        $('#chat').removeClass('active-nav');
-        $('#meet').removeClass('active-nav');
-        $('#file').removeClass('active-nav');
-        $('#setting').removeClass('active-nav');
-    }
+    // else if(window.location.href.indexOf("notification") > -1)
+    // {
+    //     $('#notification').addClass('color-highlight');
+    //     $('#home').removeClass('active-nav');
+    //     $('#chat').removeClass('active-nav');
+    //     $('#meet').removeClass('active-nav');
+    //     $('#file').removeClass('active-nav');
+    //     $('#setting').removeClass('active-nav');
+    // }
 }
 ///////////////////////////////////////////////////////////////////////
 
@@ -94,7 +94,7 @@ if (document.querySelector('#footer-bar')) {
             if(results === 'true')
             {
                 if(window.location.href.indexOf("splashscreen") > -1){
-                    window.location.href = 'home';
+                    window.location.href = 'chat';
                     // swup.loadPage({
                     //     url: 'home',
                     //     method: 'GET',

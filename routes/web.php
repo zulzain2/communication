@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 require __DIR__ . '/auth.php';
 
 Route::get('/', function () {
-    return redirect('/home');
+    return redirect('/chat');
 })->middleware(['auth']);
 
 Route::get('/offline', function () {
