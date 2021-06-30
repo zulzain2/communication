@@ -19,5 +19,6 @@ class UserTemporary extends Model
         'phone_number',
         'otp',
         'otp_expired',
+        'email'
     ];
 }
