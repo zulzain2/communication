@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('content')
 <div class="row">
     <div class="col-xl-8 offset-xl-2 col-lg-12 col-sm-12">
@@ -57,7 +58,6 @@
     
     </div>
 </div>
-
 
 
 
@@ -130,12 +130,14 @@
               <form class="needs-validation" id="addUserSharingForm" novalidate>
                 @csrf
                   <div class="input-style input-style-always-active has-borders mb-4">
-                      <select class="form-select form-control" aria-label="Default select example">
-                          <option selected>Select User..</option>
-                          @foreach($users as $user)
-                              <option value="{{$user->id}}">{{$user->name}}</option>
-                          @endforeach
-                          </select>
+                    <input type="hidden" id="id_folder" class="id_folder" name="id_folder" value="{{$id_folder}}">
+
+                    <select class="form-select form-control" aria-label="Default select example" id="userTo" name ="userTo">
+                        <option selected>Select User..</option>
+                        @foreach($users as $user)
+                            <option  value="{{$user->id}}">{{$user->name}}</option>
+                        @endforeach
+                    </select>
                   </div>
                   <div class="row">
                     <div class="col-12 text-center">
@@ -150,7 +152,7 @@
                       <thead>
                           <tr>
                           <th scope="col" class="bg-dark-dark border-dark-dark color-white">Users</th>
-                          <th scope="col" class="bg-dark-dark border-dark-dark color-white">Phone Number</th>
+                          <th scope="col" class="bg-dark-dark border-dark-dark color-white">Phone No.</th>
                           <th scope="col" class="bg-dark-dark border-dark-dark color-white">Action</th>
                           </tr>
                       </thead>
@@ -162,23 +164,105 @@
               </div>
             </div>
         </div>
+        <div id="menu-delete-user" class="menu menu-box-modal rounded-m" data-menu-width="310" data-menu-height="270">
+            <div class="text-center"><i class="fal fa-times-circle color-red-light mt-4" style="font-size: 45px;"></i></div>
+            <h1 class="text-center mt-3">Are You Sure?</h1>
+            <p class="ps-3 pe-3 text-center color-theme opacity-60">
+                Do you realy want to delete the record ? This action cannot be undone.
+            </p>
+            <form class="needs-validation" novalidate id="deleteUserForm">
+                <input type="hidden" name="idUserDelete" id="idUserDelete">
+                <button type="submit" id="delete-user"
+                  class="btn btn-m font-900 text-uppercase bg-highlight rounded-sm btn-center-l">Confirm</button>
+            </form>
+          </div>
 @endsection
 
 @push('scripts')
   <script>
     $(document).ready(function(){
-
+        let id_folder = document.getElementById('id_folder').value;
+        getAllUserSharing(id_folder)
       $("#submitUserSharing").change(function(e){
         e.preventDefault()
       })
-    })
 
-    //Add Sensor
+      $('#deleteUserForm').on('submit', function (event) {
+        
+        event.preventDefault();
+        if (navigator.onLine) {
+            var formElement = $(this);
+  
+            var formdata = new FormData();
+            formdata.append("_method", "DELETE");
+  
+            // Loop over them and prevent submission if validation fail
+            Array.prototype.slice.call(formElement)
+                .forEach(function (formValidate) {
+                    if (!formValidate.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    } else {
+                        let form = new FormData(formElement[0]);
+                        let btnSubmitForm = $('#delete-user');
+  
+                        btnSubmitForm.addClass('off-btn').trigger('classChange');
+                        // var deleteTerrainId = $('#idTerrainDelete').val();
+  
+                        fetch("folderUserSharing/" + form.get('idUserDelete') + "/", {
+                                method: 'DELETE',
+                                credentials: "same-origin",
+                                headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                            })
+                            .then(function (response) {
+                                return response.json();
+                            }).then(function (resultsJSON) {
+  
+                                var results = resultsJSON
+                                console.log(results.status)
+                                if (results.status == 'success') {
+  
+  
+                                    btnSubmitForm.removeClass('off-btn').trigger('classChange');
+  
+                                    menu('menu-delete-user', 'hide', 250);
+  
+                                    snackbar(results.status, results.message)
+  
+                                    getAllUserSharing(id_folder)
+  
+                                } else {
+                                    if (results.type == 'Validation Error') {
+                                        btnSubmitForm.removeClass('off-btn').trigger('classChange');
+  
+                                        validationErrorBuilder(results);
+                                    } else {
+                                        snackbar(results.status, results.message)
+                                    }
+                                }
+  
+                            })
+                            .catch(function (err) {
+                                console.log(err);
+                            });
+  
+  
+                    }
+                    formValidate.classList.add('was-validated');
+                });
+        } else {
+            menu('menu-offline', 'show', 250);
+        }
+        });
+
+    //Add User
   $('#addUserSharingForm').on('submit', function (event) {
     event.preventDefault();
     if (navigator.onLine) {
     var formElement = $(this);
-
+    
     // Loop over them and prevent submission
     Array.prototype.slice.call(formElement)
         .forEach(function (formValidate) {
@@ -191,8 +275,8 @@
 
                 btnSubmitForm.addClass('off-btn').trigger('classChange');
 
-                fetch("sensor", {
-                        method: 'post',
+                fetch("folderUserSharing/store", {
+                        method: 'POST',
                         credentials: "same-origin",
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
@@ -207,7 +291,7 @@
 
                         if (results.status == 'success') {
 
-                            getAllSensor();
+                            getAllUserSharing(id_folder);
 
                             btnSubmitForm.removeClass('off-btn').trigger('classChange');
 
@@ -227,7 +311,7 @@
 
                     })
                     .catch(function (err) {
-                        console.log('Error Add New Sensor: ' + err);
+                        console.log('Error Share to User: ' + err);
                     });
             }
 
@@ -238,5 +322,65 @@
     }
     });
 ///////////////////////////////////////////////////////////////////////
+    })
+
+
+
+function getAllUserSharing(id_folder) {
+      fetch('folderUserSharing/'+ id_folder).then(function (response) {
+          console.log('masuk')
+          return response.json();
+      }).then(function (resultsJSON) {
+
+        var results = resultsJSON
+
+        if (results.status == 'success') {
+
+            if (results.data) {
+                if (results.data.length) {
+
+
+                    if (document.querySelector('#tbl-usersharing')) {
+                        $('#tbl-usersharing').html('');
+
+                        results.data.map(user => {
+                            $('#tbl-usersharing').append(`
+                            <tr class="bg-dark-light">
+                            <th scope="row">${user.user_to.name}</th>
+                            <th scope="row">${user.user_to.phone_number}</th>
+                            <td>
+                            <a class="deleteUser" data-iduser="${user.id}" href="#"><i class="far fa-trash-alt color-red-dark"></i></a>
+                            </td>
+                            </tr>
+                        `);
+                        });
+
+                        $('.deleteUser').on('click', function () {
+                            let idUser = $(this).data('iduser');
+                            console.log(idUser);
+                            $('#idUserDelete').val(idUser);
+                            menu('menu-delete-user', 'show', 250);
+                        })
+
+                    }
+
+
+                } else {
+                    $('#tbl-usersharing').html('');
+                }
+            }
+
+        } else {
+            if (results.type == 'Validation Error') {
+                validationErrorBuilder(results);
+            } else {
+                snackbar(results.status, results.message)
+            }
+        }
+
+      }).catch(function (err) {
+          console.log('Error Get All Users: ' + err);
+      });
+}
   </script>
 @endpush

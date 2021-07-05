@@ -14,10 +14,11 @@ class CreateFolderUserSharingTable extends Migration
     public function up()
     {
         Schema::create('folder_user_sharing', function (Blueprint $table) {
-            $table->id();
+            $table->char('id' , 32);
             $table->char('id_folder',32);
             $table->char('id_users_from',32);
             $table->char('id_users_to',32);
+            $table->tinyInteger('id_status');
             $table->timestamps();
         });
     }

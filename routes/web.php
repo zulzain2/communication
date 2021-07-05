@@ -102,3 +102,10 @@ Route::post('file/{id}/storeFile','App\Http\Controllers\FileController@storeFile
 
 Route::resource('file', 'App\Http\Controllers\FileController');
 //////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Folder User Sharing Controller
+//////////////////////////////////////////////////////////////////////////////////////////////////
+Route::post('file/folderUserSharing/store','App\Http\Controllers\FolderUserSharingController@store')->name('folderUserSharing.store');
+Route::get('file/folderUserSharing/{id}', 'App\Http\Controllers\FolderUserSharingController@index');
+Route::resource('file/folderUserSharing', 'App\Http\Controllers\FolderUserSharingController');
+//////////////////////////////////////////////////////////////////////////////////////////////////
