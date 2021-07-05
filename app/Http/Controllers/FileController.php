@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Ramsey\Uuid\Uuid;
 use App\Models\FileFolder;
 use App\Models\FileStorage;
@@ -59,8 +60,9 @@ class FileController extends Controller
     {
       $files = FileStorage::where('id_folders','=',$id)->get();
       $id_folder = $id;
+      $users = User::all();
 
-      return view('file.show')->with(compact('files','id_folder'));
+      return view('file.show')->with(compact('files','id_folder','users'));
     }
 
     /**
@@ -117,7 +119,9 @@ class FileController extends Controller
     }
 
     public function storeFile(Request $request, $id){
-
+        request()->validate([
+            'file' => 'mimes:jpeg,png,jpg,pdf,doc,dox|max:8192'
+        ]);
       $new = New FileStorage;
       $new->id = Uuid::uuid4()->getHex();
       $new->id_users = auth()->user()->id;
@@ -130,7 +134,8 @@ class FileController extends Controller
 
         $file = $request->file('file');
         $path = $file->store('img/file', 'public');
-
+        $infoPath = pathinfo($path);
+        $new->file_extension = $infoPath['extension'];
         $new->pathfile = $path;
         } else {
             $new->pathfile = '';
