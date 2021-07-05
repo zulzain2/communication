@@ -110,6 +110,15 @@
                                     <em></em>
                                 </div>
 
+                                <label for="email" class="color-highlight text-uppercase font-700 font-10 text-center w-100" style="background-color:transparent !important">Email</label>
+                                <div class="input-style input-style-always-active no-borders no-icon mb-4">
+                                    <input type="email" id="email" name="email" class="form-control text-center" placeholder="Input email" required>
+                                    
+                                    <i class="fa fa-times disabled invalid color-red-dark"></i>
+                                    <i class="fa fa-check disabled valid color-green-dark"></i>
+                                    <em></em>
+                                </div>
+
                                 {{-- <div class="input-style no-borders has-icon validate-field">
                                     <i class="fa fa-user"></i>
                                     <input type="text" class="form-control validate-name" id="name" name="name" placeholder="Name">

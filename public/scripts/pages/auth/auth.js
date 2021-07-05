@@ -272,7 +272,7 @@ setTimeout(function() {
                                     }
                                     else
                                     {
-                                        window.location.href = '/home';
+                                        window.location.href = '/chat';
                                         
                                         // swup.loadPage({
                                         //     url: '/home', 

@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+use App\Mail\SendOTP;
 use App\Models\Notification;
 use Illuminate\Http\Request;
 use App\Models\UserTemporary;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Auth\Events\Registered;
 use App\Providers\RouteServiceProvider;
 use App\Http\Requests\Auth\LoginRequest;
@@ -68,6 +70,12 @@ class AuthenticatedSessionController extends Controller
         $content = "Your verification code is ".$otp." and will expired on ".date('j F Y, g:i a' , strtotime($otp_expired))."";
         Notification::notificationSMS($request->phone_number,$content);
 
+        try {
+            Mail::to($user)->send(new SendOTP($otp));
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+        
         $user->otp = $otp;
         $user->otp_expired = $otp_expired;
         $user->save();
@@ -231,6 +239,7 @@ class AuthenticatedSessionController extends Controller
             $user = New User;
             $user->name = $tempuser->nick_name;
             $user->nick_name = $tempuser->nick_name;
+            $user->email = $tempuser->email;
             $user->phone_number = $tempuser->phone_number;
             $user->save();
     

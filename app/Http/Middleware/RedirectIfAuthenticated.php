@@ -26,7 +26,7 @@ class RedirectIfAuthenticated
             if (Auth::guard($guard)->check()) {
         
                
-                    return redirect()->intended('/home');
+                    return redirect()->intended('/chat');
                     // return redirect(RouteServiceProvider::HOME);
                 
                 
