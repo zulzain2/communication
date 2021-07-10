@@ -45,4 +45,26 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\UserDevice', 'id_user', 'id');
     }
+
+    public static function getUserName($id){
+        if ($id != null) {
+            $user = User::find($id);
+			if($user)
+				return $user->name;
+			else{
+                if($id == "SafeUHub")
+                {
+                    return $id;
+                }
+                else
+                {
+                    return "Not Found";
+                }
+            }
+
+        } else {
+
+            return "Not Found";
+        }
+    }
 }

@@ -6,6 +6,7 @@ use App\Models\User;
 use Ramsey\Uuid\Uuid;
 use App\Models\FileFolder;
 use App\Models\FileStorage;
+use App\Models\FolderUserSharing;
 use Illuminate\Http\Request;
 
 class FileController extends Controller
@@ -23,8 +24,10 @@ class FileController extends Controller
     {
         
         $folders = FileFolder::where('id_users','=',Auth()->user()->id)->get();
+        $sharedFolders = FolderUserSharing::where('id_users_to','=',Auth()->user()->id)
+                        ->join('folder', 'folder_user_sharing.id_folder','=','folder.id')->get();
 
-        return view('file.index')->with(compact('folders'));
+        return view('file.index')->with(compact('folders','sharedFolders'));
 
     }
 
@@ -120,7 +123,7 @@ class FileController extends Controller
 
     public function storeFile(Request $request, $id){
         request()->validate([
-            'file' => 'mimes:jpeg,png,jpg,pdf,doc,dox|max:8192'
+            'file' => 'mimes:jpeg,png,jpg,pdf,doc,docx|max:8192'
         ]);
       $new = New FileStorage;
       $new->id = Uuid::uuid4()->getHex();
@@ -143,7 +146,7 @@ class FileController extends Controller
 
       $new->save();
 
-      return redirect()->action([FileController::class, 'index']);
+      return redirect()->action([FileController::class, 'show'],['file' => $id]);
 
     }
   

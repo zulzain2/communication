@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@php
+use App\Models\User;
+@endphp
 @section('content')
 <div class="row">
     <div class="col-xl-8 offset-xl-2 col-lg-12 col-sm-12">
@@ -41,6 +43,35 @@
                        <p>
                         There is no folder, create a new one
                       </p>
+                      </div>
+                      @endif
+                    @endforeach
+                    @foreach($sharedFolders as $sharedFolder)
+                      @if($sharedFolder->count() > 0)
+                        <a class="text-center"  href="/file/{{$sharedFolder->id}}">
+                            <div class="rounded-m preload-img">
+                                <svg class="w-75" x="0px" y="0px" height="100%" width="100%" focusable="false" viewBox="0 0 24 24"
+                                    fill="#5f6368">
+                                    <g>
+                                        <path
+                                            d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z">
+                                        </path>
+                                        <path d="M0 0h24v24H0z" fill="none"></path>
+                                    </g>
+                                </svg>
+                            </div>
+
+                            <p class="text-center mx-0">{{$sharedFolder->name}} <br><i>Shared by {{User::getUserName($sharedFolder->id_users)}}</i></p>
+                            <div class="caption">
+                                <p>{{$sharedFolder->description}}</p>
+                                <div class="divider bottom-0"></div>
+                            </div>
+                        </a>
+                      @else
+                      <div>
+                        <p>
+                            There is no folder, create a new one
+                        </p>
                       </div>
                       @endif
                     @endforeach
