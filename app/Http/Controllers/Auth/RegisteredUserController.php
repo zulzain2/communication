@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+use App\Mail\SendOTP;
 use App\Models\Notification;
 use Illuminate\Http\Request;
 use App\Models\UserTemporary;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Auth\Events\Registered;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Response;
@@ -78,7 +80,7 @@ class RegisteredUserController extends Controller
         try {
             Mail::to($user_temporary)->send(new SendOTP($otp));
         } catch (\Throwable $th) {
-            //throw $th;
+            throw $th;
         }
 
         // $user = User::create([
