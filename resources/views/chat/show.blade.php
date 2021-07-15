@@ -89,7 +89,7 @@
 
 @push('scripts')
   <script>
-    let ip_address = 'https://socket.tvetxr.ga/ ';
+    let ip_address = 'https://socket.tvetxr.ga/';
     let socket = io(ip_address);
 
     var receiver_id = "{{ $friendInfo->id }}";
