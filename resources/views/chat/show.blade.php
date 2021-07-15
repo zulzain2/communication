@@ -146,7 +146,6 @@
                 <div class="speech-bubble ${sender ? 'speech-left bg-highlight' :'speech-right color-black'} " >
                       ${message}
                       <br>
-                    <small>{{ date('h:i a', strtotime($message->created_at)) }}</small>
                 </div>
               </li>
           </ul>
