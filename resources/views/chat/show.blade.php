@@ -90,8 +90,7 @@
 @push('scripts')
   <script>
     let ip_address = 'https://socket.tvetxr.ga/ ';
-    let socket_port = '3000';
-    let socket = io(ip_address + ':' + socket_port);
+    let socket = io(ip_address);
 
     var receiver_id = "{{ $friendInfo->id }}";
     var my_id = "{{ Auth()->id() }}";
