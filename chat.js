@@ -3,6 +3,10 @@ const app = express();
 
 const server = require('http').createServer(app);
 
+app.get('/', (req, res) => {
+  res.send('Node Successful response from chat.js.');
+});
+
 const io = require('socket.io')(server, {
   cors: {
     origin: '*'
