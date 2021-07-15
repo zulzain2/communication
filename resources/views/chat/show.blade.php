@@ -152,6 +152,7 @@
       }
 
       socket.on('receive_message', (message) => {
+        console.log("receive msg");
         appendMessage(message, false)
       })
     })
