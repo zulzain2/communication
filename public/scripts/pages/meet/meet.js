@@ -163,7 +163,7 @@ setTimeout(function() {
                         $('#menu-meeting-invitation').removeClass('menu-active');
                     }); 
 
-                    var domain = 'meet.tvetxr.ga';
+                    var domain = 'meet.jit.si';
                     var options = {
                         roomName: meetingId ? meetingId : 'MaGICXMeetRoom',
                         width: '100%',
