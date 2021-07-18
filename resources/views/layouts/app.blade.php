@@ -228,7 +228,7 @@
     <script type="text/javascript" src="{{ URL::to('scripts/plugins/bootstrap/bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::to('scripts/plugins/jquery/jquery-3.6.0.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::to('scripts/plugins/moment/moment.js') }}"></script>
-    <script src="https://meet.tvetxr.ga/external_api.js"></script>
+    <script src='https://meet.jit.si/external_api.js'></script>
     <script type="text/javascript" src="{{ URL::to('scripts/plugins/clipboard/clipboard.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::to('scripts/default.js') }}"></script>
     <script type="text/javascript" src="{{ URL::to('scripts/plugins/dropify/js/dropify.min.js') }}"></script>
